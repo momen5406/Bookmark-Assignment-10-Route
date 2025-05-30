@@ -77,6 +77,12 @@ hr {
   -webkit-text-fill-color: transparent;
 }
 
+@media (max-width: 576px) {
+  .form h2 {
+    font-size: 1.375rem;
+  }
+}
+
 .btn-red {
   background-color: var(--dark-orange);
   color: white;
@@ -108,5 +114,12 @@ hr {
 
 table tr {
   vertical-align: baseline;
+}
+
+@media (max-width: 768px) {
+  table td button span,
+  table td a span {
+    display: none;
+  }
 }
 /* End Form */

@@ -42,9 +42,9 @@ function displayWebsite(list) {
       <tr>
         <td>${i+1}</td>
         <td>${list[i].name}</td>
-        <td><a href="https://${list[i].url}" target="_blank" class="btn btn-visit"><i class="fa-solid fa-eye me-2"></i>Visit</a></td>
-        <td><button onclick='setUpEditWebsite(${i})' class="btn btn-primary"><i class="fa-solid fa-edit me-2"></i>Edit</button></td>
-        <td><button onclick='deleteWebsite(${i})' class="btn btn-delete"><i class="fa-solid fa-trash-can me-2"></i>Delete</button></td>
+        <td><a href="https://${list[i].url}" target="_blank" class="btn btn-visit"><i class="fa-solid fa-eye me-md-2"></i><span>Visit</span></a></td>
+        <td><button onclick='setUpEditWebsite(${i})' class="btn btn-primary"><i class="fa-solid fa-edit me-md-2"></i><span>Edit</span></button></td>
+        <td><button onclick='deleteWebsite(${i})' class="btn btn-delete"><i class="fa-solid fa-trash-can me-md-2"></i><span>Delete</span></button></td>
       </tr>
     `
   }
@@ -104,6 +104,8 @@ var validatePattern = {
 }
 
 function validateForm(input, key) {
+  input.classList.remove("is-valid", "is-invalid");
+
   var pattern = validatePattern[key];
   var userValue = input.value;
   var isMatched = pattern.test(userValue);
