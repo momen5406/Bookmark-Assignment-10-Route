@@ -1,0 +1,112 @@
+/* Start Global */
+:root {
+  --bg-color: #F7ECDE;
+  --dark-orange: #D1512D;
+  --orange: #FEC260;
+  --dark-green: #3EA55B;
+  --light-green: #B3AC49;
+  --red: #D30820;
+  --logo-font: "Pacifico", sans-serif;
+  --heading-font: "Righteous", sans-serif;
+  --body-font: "PT Sans Caption", sans-serif;
+}
+
+::selection {
+  background-color: var(--orange);
+  color: black;
+}
+
+body {
+  background-color: var(--bg-color);
+  font-family: var(--body-font);
+}
+
+hr {
+  border: none;
+  border-bottom: 2px dotted black;
+  opacity: 1;
+}
+/* End Global */
+
+/* Start Logo */
+.logo {
+  font-family: var(--logo-font);
+  font-size: 3.125rem;
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background-color: var(--orange);
+    z-index: -1;
+    transition: .3s ease-in-out;
+  }
+
+  &:hover::before {
+    height: 40px;
+  }
+}
+/* End Logo */
+
+/* Start Edit Layer */
+.editLayer h4 {
+  font-family: var(--heading-font);
+}
+
+.editLayer .exit {
+  background: none;
+  border: none;
+}
+/* End Edit Layer */
+
+/* Start Form */
+.form h2 {
+  font-family: var(--heading-font);
+  font-size: 1.5625rem;
+  background: linear-gradient(to right, var(--dark-green), var(--light-green));
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-red {
+  background-color: var(--dark-orange);
+  color: white;
+
+  &:hover {
+    background-color: #BB4120;
+    color: white;
+  }
+}
+
+.form .form-control:focus {
+  border-color: #FEC260;
+  box-shadow: 0 0 0 .25rem rgba(254, 194, 96, .25);
+}
+
+.btn-visit {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #9EB23B;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #8A9E23;
+}
+
+.btn-delete {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #EB1D36;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #D30820;
+}
+
+table tr {
+  vertical-align: baseline;
+}
+/* End Form */

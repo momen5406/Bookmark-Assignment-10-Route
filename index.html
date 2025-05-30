@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment 10 - Bookmark</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="css/all.min.css">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <!-- Edit Layer -->
+  <div id="editLayer" class="editLayer d-none d-flex align-items-center justify-content-center position-fixed h-100 w-100 bg-black bg-opacity-50 z-3">
+    <div class="box d-flex flex-column bg-white p-3 rounded w-25">
+      <div class="d-flex align-items-center justify-content-between mb-4">
+        <h4>Edit Bookmark</h4>
+        <button onclick="deleteLayer()" class="exit"><i class="fa-solid fa-xmark fs-4"></i></button>
+      </div>
+      <div class="box mb-4 w-100">
+        <label for="websiteEditName" class="form-label fw-bold"><i class="fa-solid fa-book-bookmark me-2"></i>Site Name</label>
+        <input oninput="validateForm(this, 'name')" type="text" class="form-control" id="websiteEditName" placeholder="Website Name">
+      </div>
+
+      <div class="box mb-4 w-100">
+        <label for="websiteEditURL" class="form-label fw-bold"><i class="fa-solid fa-link me-2"></i>Site URL</label>
+        <input oninput="validateForm(this, 'url')" type="text" class="form-control" id="websiteEditURL" placeholder="Website URL">
+      </div>
+
+      <button onclick="editWebsite()" class="btn btn-red px-5" id="editBTN">Edit</button>
+    </div>
+  </div>
+
+  <div class="container py-5">
+
+    <h1 class="logo my-5">Bookmarker</h1>
+
+    <hr>
+    
+    <div class="form py-2 d-flex flex-column align-items-center">
+      <h2 class="mb-3">
+        <i class="fa-solid fa-bookmark"></i>
+        Bookmark your favorite sites
+        <i class="fa-solid fa-bookmark"></i>
+      </h2>
+
+      <div class="box mb-4 w-100">
+        <label for="websiteName" class="form-label fw-bold"><i class="fa-solid fa-book-bookmark me-2"></i>Site Name</label>
+        <input oninput="validateForm(this, 'name')" type="text" class="form-control" id="websiteName" placeholder="Website Name">
+      </div>
+
+      <div class="box mb-4 w-100">
+        <label for="websiteURL" class="form-label fw-bold"><i class="fa-solid fa-link me-2"></i>Site URL</label>
+        <input oninput="validateForm(this, 'url')" type="text" class="form-control" id="websiteURL" placeholder="Website URL">
+      </div>
+
+      <button onclick="addWebsite()" class="btn btn-red px-5" id="addBTN">Add</button>
+    </div>
+
+    <hr>
+
+    <table class="table text-center text-capitalize mt-4">
+      <thead>
+        <th>index</th>
+        <th>Website Name</th>
+        <th>Visit</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </thead>
+
+      <tbody id="tBody">
+        
+      </tbody>
+    </table>
+
+  </div>
+
+
+
+
+
+
+  <script src="js/main.js"></script>
+</body>
+</html>
