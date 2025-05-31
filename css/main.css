@@ -57,7 +57,8 @@ hr {
 /* End Logo */
 
 /* Start Edit Layer */
-.editLayer h4 {
+.editLayer h4,
+.sureLayer h4 {
   font-family: var(--heading-font);
 }
 
@@ -65,7 +66,28 @@ hr {
   background: none;
   border: none;
 }
+
+@media (max-width: 768px) {
+  .sureLayer > div {
+    min-width: 50%;
+  }
+}
 /* End Edit Layer */
+
+/* Start Table */
+.table {
+  --bs-table-bg: transparent;
+}
+
+.table tr {
+  background-color: white;
+  transition: .3s ease;
+}
+
+.table tbody tr:hover {
+  background-color: #f6f6f6;
+}
+/* End Table */
 
 /* Start Form */
 .form h2 {

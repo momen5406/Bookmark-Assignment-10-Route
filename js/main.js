@@ -5,7 +5,9 @@ let websiteEditURL = document.getElementById("websiteEditURL");
 let websiteList = []; 
 let addBTN = document.getElementById("addBTN");
 let editBTN = document.getElementById("editBTN");
+let deleteAllBTN = document.getElementById("deleteAllBTN");
 let editLayer = document.getElementById("editLayer");
+let sureLayer = document.getElementById("sureLayer");
 var websiteIndex;
 
 if ( localStorage.getItem("websites") != null ) {
@@ -44,12 +46,18 @@ function displayWebsite(list) {
         <td>${list[i].name}</td>
         <td><a href="https://${list[i].url}" target="_blank" class="btn btn-visit"><i class="fa-solid fa-eye me-md-2"></i><span>Visit</span></a></td>
         <td><button onclick='setUpEditWebsite(${i})' class="btn btn-primary"><i class="fa-solid fa-edit me-md-2"></i><span>Edit</span></button></td>
-        <td><button onclick='deleteWebsite(${i})' class="btn btn-delete"><i class="fa-solid fa-trash-can me-md-2"></i><span>Delete</span></button></td>
+        <td><button onclick='setUpDeleteWebsite(${i})' class="btn btn-delete"><i class="fa-solid fa-trash-can me-md-2"></i><span>Delete</span></button></td>
       </tr>
     `
   }
 
   document.getElementById("tBody").innerHTML = box;
+
+  if ( websiteList.length == 0 ) {
+    deleteAllBTN.classList.add("d-none");
+  } else {
+    deleteAllBTN.classList.remove("d-none");
+  }
 }
 
 function clearInput() {
@@ -68,10 +76,6 @@ function setUpEditWebsite(index) {
 
   websiteIndex = index;
 
-  window.scroll({
-    top: 0,
-    behavior: 'smooth',
-  })
 }
 
 // Edit the name and url of the websites
@@ -85,20 +89,33 @@ function editWebsite() {
   editLayer.classList.add("d-none");
 }
 
+function setUpDeleteWebsite(index) {
+  sureLayer.classList.remove("d-none");
+
+  websiteIndex = index;
+}
+
 // Function to delete the website from the websiteList array and then display the list in the table
 function deleteWebsite(index) {
   websiteList.splice(index, 1);
   localStorage.setItem("websites", JSON.stringify(websiteList));
 
   displayWebsite(websiteList);
+
+  sureLayer.classList.add("d-none");
+}
+
+function appearLayer(layer) {
+  layer.classList.remove("d-none");
 }
 
 // Function to hide edit layer
-function deleteLayer() {
-  editLayer.classList.add("d-none");
+function deleteLayer(layer) {
+  layer.classList.add("d-none");
 }
 
 var validatePattern = {
+  // !! Gbthom mn 3alnet 3ala tol
   name: /[A-Z][a-z]{3,}/,
   url: /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/
 }
@@ -115,4 +132,11 @@ function validateForm(input, key) {
   } else {
     input.classList.add("is-invalid");
   }
+}
+
+function deleteAll() {
+  websiteList.splice(0, websiteList.length);
+  localStorage.setItem("websites", JSON.stringify(websiteList));
+
+  displayWebsite(websiteList);
 }
