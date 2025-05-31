@@ -1,3 +1,4 @@
+// Variables Initialization
 let websiteName = document.getElementById("websiteName");
 let websiteURL = document.getElementById("websiteURL");
 let websiteEditName = document.getElementById("websiteEditName");
@@ -11,6 +12,7 @@ let sureLayer = document.getElementById("sureLayer");
 let errorLayer = document.getElementById("errorLayer");
 var websiteIndex;
 
+// Check if the localstorage has old websites data
 if ( localStorage.getItem("websites") != null ) {
   // Retrieve the JSON data and convert it in Website List
   websiteList = JSON.parse(localStorage.getItem("websites"));
@@ -21,12 +23,14 @@ if ( localStorage.getItem("websites") != null ) {
 
 // Function to add website to the websiteList array
 function addWebsite() {
+  // Check if the inputs are empty when the user press the add button
   if ( websiteName.value == '' && websiteURL.value == '' ) {
     window.scroll({
       top: 0,
       behavior: 'smooth'
     });
 
+    // Display the error message
     errorLayer.classList.add("display-error-layer");
   } else {
     var website = {
@@ -63,6 +67,7 @@ function displayWebsite(list) {
 
   document.getElementById("tBody").innerHTML = box;
 
+  // To hide the delete all button when there is not websites in the list
   if ( websiteList.length == 0 ) {
     deleteAllBTN.classList.add("d-none");
   } else {
@@ -85,7 +90,6 @@ function setUpEditWebsite(index) {
   editLayer.classList.remove("d-none");
 
   websiteIndex = index;
-
 }
 
 // Edit the name and url of the websites
@@ -99,6 +103,7 @@ function editWebsite() {
   editLayer.classList.add("d-none");
 }
 
+// Displays the are your sure layer
 function setUpDeleteWebsite(index) {
   sureLayer.classList.remove("d-none");
 
@@ -119,7 +124,7 @@ function appearLayer(layer) {
   layer.classList.remove("d-none");
 }
 
-// Function to hide edit layer
+// Function to hide any layer
 function deleteLayer(layer) {
   layer.classList.add("d-none");
 }
@@ -144,6 +149,7 @@ function validateForm(input, key) {
   }
 }
 
+// Delete all the websites at once
 function deleteAll() {
   websiteList.splice(0, websiteList.length);
   localStorage.setItem("websites", JSON.stringify(websiteList));
@@ -151,6 +157,7 @@ function deleteAll() {
   displayWebsite(websiteList);
 }
 
+// Hide the error message
 function hideErrorLayer() {
   errorLayer.classList.remove("display-error-layer");
 }
