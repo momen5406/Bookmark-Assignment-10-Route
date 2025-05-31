@@ -8,6 +8,7 @@ let editBTN = document.getElementById("editBTN");
 let deleteAllBTN = document.getElementById("deleteAllBTN");
 let editLayer = document.getElementById("editLayer");
 let sureLayer = document.getElementById("sureLayer");
+let errorLayer = document.getElementById("errorLayer");
 var websiteIndex;
 
 if ( localStorage.getItem("websites") != null ) {
@@ -20,18 +21,27 @@ if ( localStorage.getItem("websites") != null ) {
 
 // Function to add website to the websiteList array
 function addWebsite() {
-  var website = {
-    name: websiteName.value,
-    url: websiteURL.value
-  };
+  if ( websiteName.value == '' && websiteURL.value == '' ) {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth'
+    });
 
-  // Add website to website list array
-  websiteList.push(website);
-  // Store the website List in the Local Storage
-  localStorage.setItem("websites", JSON.stringify(websiteList));
-
-  clearInput();
-  displayWebsite(websiteList);
+    errorLayer.classList.add("display-error-layer");
+  } else {
+    var website = {
+      name: websiteName.value,
+      url: websiteURL.value
+    };
+  
+    // Add website to website list array
+    websiteList.push(website);
+    // Store the website List in the Local Storage
+    localStorage.setItem("websites", JSON.stringify(websiteList));
+  
+    clearInput();
+    displayWebsite(websiteList);
+  }
 }
 
 // Function to display the websites in the table
@@ -139,4 +149,8 @@ function deleteAll() {
   localStorage.setItem("websites", JSON.stringify(websiteList));
 
   displayWebsite(websiteList);
+}
+
+function hideErrorLayer() {
+  errorLayer.classList.remove("display-error-layer");
 }
