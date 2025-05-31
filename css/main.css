@@ -86,7 +86,7 @@ hr {
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translate(-50%, -100%);
+  transform: translate(-50%, -110%);
   background-color: #EB1D36;
   color: white;
   transition: .3s ease-in-out;
