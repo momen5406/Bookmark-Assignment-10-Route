@@ -24,7 +24,7 @@ if ( localStorage.getItem("websites") != null ) {
 // Function to add website to the websiteList array
 function addWebsite() {
   // Check if the inputs are empty when the user press the add button
-  if ( websiteName.value == '' && websiteURL.value == '' ) {
+  if ( websiteName.value == '' || websiteURL.value == '' ) {
     window.scroll({
       top: 0,
       behavior: 'smooth'
